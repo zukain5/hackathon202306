@@ -1,24 +1,17 @@
 # README
+- ruby: 3.2.2
+- rails: 7.0.5
+- mysql: 5.7
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 初回のセットアップ
+```shell
+docker-compose build
+docker-compose run --rm web rails db:create
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ローカルでの実行
+```shell
+docker-compose up -d
+# for M1 Mac
+# docker-compose -f docker-compose.yaml -f m1mac.yaml up -d
+```
