@@ -1,0 +1,6 @@
+# M1 Mac のときは以下のコマンドでこのファイルも読み込むようにすればうまくいくはず
+# `docker-compose -f docker-compose.yaml -f m1mac.yaml up -d`
+version: '3'
+services:
+  db:
+    platform: linux/amd64
