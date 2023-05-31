@@ -13,5 +13,5 @@ docker-compose run --rm web rails db:create
 ```shell
 docker-compose up -d
 # for M1 Mac
-# docker-compose -f docker-compose.yaml -f m1mac.yaml up -d
+# docker-compose -f docker-compose.yml -f m1mac.yml up -d
 ```
