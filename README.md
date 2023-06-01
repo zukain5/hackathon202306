@@ -5,13 +5,26 @@
 
 ## 初回のセットアップ
 ```shell
-docker-compose build
-docker-compose run --rm web rails db:create
+make init
 ```
 
-## ローカルでの実行
+## ローカルサーバーの立ち上げ
 ```shell
-docker-compose up -d
-# for M1 Mac
-# docker-compose -f docker-compose.yml -f m1mac.yml up -d
+make up
+make up_m1  # for M1 Mac
+```
+
+## コンテナのシェルに入る
+```shell
+make bash
+```
+
+## rails console に入る
+```shell
+make rails_console
+```
+
+## DB のマイグレーションをする
+```shell
+make db_migrate
 ```
