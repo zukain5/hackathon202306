@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ear_pick:
+  name: 耳かき
+
+nail_clip:
+  name: 爪切り
