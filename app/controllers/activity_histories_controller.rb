@@ -18,6 +18,19 @@ class ActivityHistoriesController < ApplicationController
     redirect_to activity, status: :see_other
   end
 
+  def edit
+    @activity_history = ActivityHistory.find(params[:id])
+  end
+
+  def update
+    @activity_history = ActivityHistory.find(params[:id])
+    if @activity_history.update(activity_history_params)
+      redirect_to @activity_history.activity, status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def activity_history_params
