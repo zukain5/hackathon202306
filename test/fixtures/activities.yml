@@ -1,7 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-ear_pick:
+alice_ear_pick:
   name: 耳かき
+  user: alice
 
-nail_clip:
+alice_nail_clip:
   name: 爪切り
+  user: alice
+
+bob_nail_clip:
+  name: 爪切り
+  user: bob

@@ -11,9 +11,8 @@
       <% end %>
     </div>
 
-    <div>
-      <%= form.text_field :name %>
-    </div>
+    <%= form.text_field :name %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
 
     <div>
       <%= form.submit "登録" %>

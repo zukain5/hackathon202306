@@ -1,8 +1,10 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = Activity.all
-    @activity = Activity.new
-    @activity_history = ActivityHistory.new
+    if user_signed_in?
+      @activities = Activity.all_for(current_user)
+      @activity = Activity.new
+      @activity_history = ActivityHistory.new
+    end
   end
 
   def create
@@ -10,7 +12,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to activities_path
     else
-      @activities = Activity.all
+      @activities = Activity.all_for(current_user)
       render :index, status: :unprocessable_entity
     end
   end
@@ -46,7 +48,8 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(
-      :name
+      :name,
+      :user_id,
     )
   end
 end
