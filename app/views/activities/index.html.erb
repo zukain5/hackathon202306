@@ -1,6 +1,6 @@
 <h1>アクティビティ一覧</h1>
 <% @activities.each do |activity| %>
-  <h2><%= activity.name %></h2>
+  <h2><%= link_to activity.name, activity %></h2>
   <p><%= format_time_diff(activity.passed_time) %></p>
   <%= button_to "Done!",
     {controller: 'activity_histories', action: 'create'},

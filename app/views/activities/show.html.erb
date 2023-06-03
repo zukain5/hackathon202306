@@ -1,0 +1,17 @@
+<h1><%= @activity.name %></h1>
+<table>
+  <thead>
+    <tr>
+      <th>時刻</th>
+      <th>メモ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activity.activity_histories.order(acted_at: :DESC).each do |history| %>
+      <tr>
+        <td><%= history.acted_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+        <td><%= history.note %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

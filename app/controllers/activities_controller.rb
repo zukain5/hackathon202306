@@ -14,6 +14,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def show
+    @activity = Activity.find(params[:id])
+  end
+
   private
 
   def activity_params
