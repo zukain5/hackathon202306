@@ -28,6 +28,7 @@
       <tr>
         <td><%= history.acted_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
         <td><%= history.note %></td>
+        <td><%= link_to "編集", edit_activity_history_path(history) %></td>
         <td><%= link_to "削除", history, data: {
           turbo_method: :delete,
           turbo_confirm: "本当に削除してよろしいですか？",

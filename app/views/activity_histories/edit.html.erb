@@ -1,0 +1,22 @@
+<h1>編集</h1>
+<%= form_with model: @activity_history do |form| %>
+  <table>
+    <tbody>
+      <tr>
+        <td><%= form.label :activity_id, "アクティビティ" %></td>
+        <td><%= @activity_history.activity.name %></td>
+      </tr>
+      <tr>
+        <td><%= form.label :note, "メモ" %></td>
+        <td><%= form.text_field :note %></td>
+      </tr>
+      <tr>
+        <td><%= form.label :acted_at, "時刻" %></td>
+        <td><%= form.datetime_field :acted_at %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <%= form.submit "登録" %>
+  </div>
+<% end %>
