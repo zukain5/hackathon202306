@@ -1,4 +1,20 @@
 <h1><%= @activity.name %></h1>
+<%= form_with model: @activity_history do |form| %>
+  <div>
+    <%= form.label :note, "メモ" %>
+    <%= form.text_field :note %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :acted_at, value: Time.current %>
+    <%= form.hidden_field :activity_id, value: @activity.id %>
+  </div>
+
+  <div>
+    <%= form.submit "今追加！" %>
+  </div>
+<% end %>
+
 <table>
   <thead>
     <tr>
