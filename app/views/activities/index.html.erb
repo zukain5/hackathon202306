@@ -1,13 +1,5 @@
 <h1>アクティビティ一覧</h1>
-<% @activities.each do |activity| %>
-  <h2><%= link_to activity.name, activity %></h2>
-  <p><%= format_time_diff(activity.passed_time) %></p>
-  <%= button_to "Done!",
-    {controller: 'activity_histories', action: 'create'},
-    {params:{activity_history: {activity_id: activity.id, acted_at: Time.current}}} %>
-<% end %>
 
-<h1>新規登録</h1>
 <%= form_with model: @activity do |form| %>
   <div>
     <% @activity.errors.full_messages.each do |message| %>
@@ -23,4 +15,14 @@
   <div>
     <%= form.submit "登録" %>
   </div>
+<% end %>
+
+<hr>
+
+<% @activities.each do |activity| %>
+  <h2><%= link_to activity.name, activity %></h2>
+  <p><%= format_time_diff(activity.passed_time) %></p>
+  <%= button_to "Done!",
+    {controller: 'activity_histories', action: 'create'},
+    {params:{activity_history: {activity_id: activity.id, acted_at: Time.current}}} %>
 <% end %>
