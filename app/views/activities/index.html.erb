@@ -23,7 +23,9 @@
 <% @activities.each do |activity| %>
   <h3><%= link_to activity.name, activity %></h3>
   <p><%= format_time_diff(activity.passed_time) %></p>
-  <%= button_to "Did it!",
-    {controller: 'activity_histories', action: 'create'},
-    {params:{activity_history: {activity_id: activity.id, acted_at: Time.current}}} %>
+  <%= form_with model: @activity_history do |form| %>
+    <%= form.hidden_field :activity_id, value: activity.id %>
+    <%= form.hidden_field :acted_at, value: Time.current %>
+    <%= form.submit "Did it!" %>
+  <% end %>
 <% end %>
