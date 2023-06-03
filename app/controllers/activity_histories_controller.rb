@@ -13,7 +13,7 @@ class ActivityHistoriesController < ApplicationController
   private
 
   def activity_history_params
-    params.require(:activity_histories).permit(
+    params.require(:activity_history).permit(
       :activity_id,
       :acted_at,
       :note,
