@@ -12,4 +12,16 @@ class Activity < ApplicationRecord
 
 		Time.current - latest_history_datetime
 	end
+
+  class << self
+    def all_asc_by_passed_time
+      ActivityHistory
+        .group(:activity_id)
+        .maximum(:acted_at) # {id: acted_at} のハッシュが返る
+        .sort_by {|_, v| v } # acted_at でソート
+        .reverse
+        .map(&:first) # idのみ取り出す
+        .map {|id| Activity.find(id) }
+    end
+  end
 end

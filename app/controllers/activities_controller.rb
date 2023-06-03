@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
 	def index
-		@activities = Activity.all
+		@activities = Activity.all_asc_by_passed_time
     @activity = Activity.new
 	end
 
