@@ -1,5 +1,7 @@
-<h1>アクティビティ一覧</h1>
+<h1>TATTA?</h1>
+<p>あれから何日経った？がわかるアプリ</p>
 
+<h4>新規アクティビティ</h4>
 <%= form_with model: @activity do |form| %>
   <div>
     <% @activity.errors.full_messages.each do |message| %>
@@ -8,7 +10,6 @@
   </div>
 
   <div>
-    <%= form.label :name, "名前" %>
     <%= form.text_field :name %>
   </div>
 
@@ -20,9 +21,9 @@
 <hr>
 
 <% @activities.each do |activity| %>
-  <h2><%= link_to activity.name, activity %></h2>
+  <h3><%= link_to activity.name, activity %></h3>
   <p><%= format_time_diff(activity.passed_time) %></p>
-  <%= button_to "Done!",
+  <%= button_to "Did it!",
     {controller: 'activity_histories', action: 'create'},
     {params:{activity_history: {activity_id: activity.id, acted_at: Time.current}}} %>
 <% end %>
