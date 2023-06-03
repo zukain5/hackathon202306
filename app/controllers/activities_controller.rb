@@ -9,6 +9,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to activities_path
     else
+      @activities = Activity.all
       render :index, status: :unprocessable_entity
     end
   end

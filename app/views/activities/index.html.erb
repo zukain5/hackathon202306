@@ -7,6 +7,12 @@
 <h1>新規登録</h1>
 <%= form_with model: @activity do |form| %>
   <div>
+    <% @activity.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.label :name, "名前" %>
     <%= form.text_field :name %>
   </div>
