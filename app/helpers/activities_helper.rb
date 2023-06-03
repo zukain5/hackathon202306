@@ -1,5 +1,8 @@
 module ActivitiesHelper
 	def format_time_diff(diff)
+    # diff < 0 は未実施と解釈する
+    return "ー" if diff < 0
+
 		s = (diff % 60).to_i
 		m = (((diff - s) / 60) % 60).to_i
 		h = (((diff - s - m * 60) / (60 ** 2)) % 24).to_i
