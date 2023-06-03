@@ -28,4 +28,8 @@
     <%= form.hidden_field :acted_at, value: Time.current %>
     <%= form.submit "Did it!" %>
   <% end %>
+  <%= link_to "削除", activity_path(activity), data: {
+    turbo_method: :delete,
+    turbo_confirm: "本当に削除してよろしいですか？",
+  } %>
 <% end %>
