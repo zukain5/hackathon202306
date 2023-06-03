@@ -1,4 +1,8 @@
 class ActivitiesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :show]
+
+  include ApplicationHelper
+
   def index
     if user_signed_in?
       @activities = Activity.all_for(current_user)
@@ -9,6 +13,8 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new(activity_params)
+    return redirect_to(root_path) unless current_user? activity_params[:user_id].to_i
+
     if @activity.save
       redirect_to activities_path
     else
@@ -19,6 +25,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+    return redirect_to(root_path) unless current_user? @activity.user_id
+
     @activity_history = ActivityHistory.new
   end
 
