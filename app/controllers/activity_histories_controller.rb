@@ -2,7 +2,7 @@ class ActivityHistoriesController < ApplicationController
   def create
     @activity_history = ActivityHistory.new(activity_history_params)
     if @activity_history.save
-      redirect_to activities_path
+      redirect_to request.referer
     else
       # これでいいのかは微妙
       @activities = Activity.all
