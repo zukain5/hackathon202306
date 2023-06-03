@@ -2,6 +2,9 @@
 <% @activities.each do |activity| %>
   <h2><%= activity.name %></h2>
   <p><%= format_time_diff(activity.passed_time) %></p>
+  <%= button_to "Done!",
+    {controller: 'activity_histories', action: 'create'},
+    {params:{activity_histories: {activity_id: activity.id, acted_at: Time.current}}} %>
 <% end %>
 
 <h1>新規登録</h1>
