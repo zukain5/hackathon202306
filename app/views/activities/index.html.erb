@@ -2,4 +2,5 @@
 <% @activities.each do |activity| %>
 	<p><%= activity.name %></p>
 	<p><%= activity.latest_history_datetime %></p>
+	<p><%= format_time_diff(activity.passed_time) %></p>
 <% end %>
