@@ -2,6 +2,7 @@
 <p>あれから何日経った？がわかるアプリ</p>
 
 <% if user_signed_in? %>
+  <%= link_to "ユーザー情報の編集", edit_user_registration_path(current_user) %>
   <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
   <h4>新規アクティビティ</h4>
   <%= form_with model: @activity do |form| %>
