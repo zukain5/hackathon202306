@@ -20,6 +20,14 @@ class ActivitiesController < ApplicationController
     @activity_history = ActivityHistory.new
   end
 
+  def destroy
+    
+    @activity = Activity.find(params[:id])
+    @activity.destroy
+
+    redirect_to activities_path, status: :see_other
+  end
+
   private
 
   def activity_params
