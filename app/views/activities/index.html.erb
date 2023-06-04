@@ -22,19 +22,21 @@
 
   <hr>
 
-  <% @activities.each do |activity| %>
-    <h3><%= link_to activity.name, activity %></h3>
-    <p><%= format_time_diff(activity.passed_time) %></p>
-    <%= form_with model: @activity_history do |form| %>
-      <%= form.hidden_field :activity_id, value: activity.id %>
-      <%= form.hidden_field :acted_at, value: Time.current %>
-      <%= form.submit "Did it!" %>
-    <% end %>
-    <%= link_to "削除", activity_path(activity), data: {
-      turbo_method: :delete,
-      turbo_confirm: "本当に削除してよろしいですか？",
-    } %>
-  <% end %>
+  <table>
+    <tbody>
+      <% @activities.each do |activity| %>
+        <tr>
+          <td><%= link_to activity.name, activity %></td>
+          <td><%= format_time_diff(activity.passed_time) %></td>
+          <td><%= form_with model: @activity_history do |form| %>
+                <%= form.hidden_field :activity_id, value: activity.id %>
+                <%= form.hidden_field :acted_at, value: Time.current %>
+                <%= form.submit "Did it!"  %></td>
+              <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <%= link_to "ログイン", new_user_session_path %>
 <% end %>
