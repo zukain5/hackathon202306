@@ -13,7 +13,7 @@
       </tr>
       <tr>
         <td><%= form.label :acted_at, "時刻" %></td>
-        <td><%= form.datetime_field :acted_at %></td>
+        <td><%= form.datetime_field :acted_at, value: @activity_history.acted_at.strftime("%Y-%m-%dT%H:%M") %></td>
       </tr>
     </tbody>
   </table>
