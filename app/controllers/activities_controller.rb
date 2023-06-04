@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = Activity.all_asc_by_passed_time
+    @activities = Activity.all
     @activity = Activity.new
     @activity_history = ActivityHistory.new
   end
@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    
+
     @activity = Activity.find(params[:id])
     @activity.destroy
 
