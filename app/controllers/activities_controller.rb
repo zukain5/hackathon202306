@@ -1,7 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :show]
-
-  include ApplicationHelper
+  before_action :authenticate_user!, only: [:create, :show, :destroy]
+  before_action :correct_user, only: [:show, :destroy, :edit, :update]
 
   def index
     if user_signed_in?
@@ -13,7 +12,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new(activity_params)
-    return redirect_to(root_path) unless current_user? activity_params[:user_id].to_i
+    correct_user
 
     if @activity.save
       redirect_to activities_path
@@ -24,18 +23,16 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find(params[:id])
-    return redirect_to(root_path) unless current_user? @activity.user_id
-
+    @activity ||= Activity.find(params[:id])
     @activity_history = ActivityHistory.new
   end
 
   def edit
-    @activity = Activity.find(params[:id])
+    @activity ||= Activity.find(params[:id])
   end
 
   def update
-    @activity = Activity.find(params[:id])
+    @activity ||= Activity.find(params[:id])
     if @activity.update(activity_params)
       redirect_to @activity, status: :see_other
     else
@@ -45,8 +42,7 @@ class ActivitiesController < ApplicationController
 
 
   def destroy
-
-    @activity = Activity.find(params[:id])
+    @activity ||= Activity.find(params[:id])
     @activity.destroy
 
     redirect_to activities_path, status: :see_other
@@ -59,5 +55,11 @@ class ActivitiesController < ApplicationController
       :name,
       :user_id,
     )
+  end
+
+  def correct_user
+    # なんか副作用があって良くないような気もする
+    @activity ||= Activity.find(params[:id])
+    redirect_to(root_path) unless @activity.user == current_user
   end
 end
