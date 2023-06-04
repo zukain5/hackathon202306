@@ -1,0 +1,12 @@
+<p><%= link_to "前に戻る", @activity %></p>
+<h1>アクティビティ名の編集</h1>
+<%= form_with model: @activity do |form| %>
+
+  <div>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit "変更" %>
+  </div>
+<% end %>

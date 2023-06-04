@@ -20,6 +20,20 @@ class ActivitiesController < ApplicationController
     @activity_history = ActivityHistory.new
   end
 
+  def edit
+    @activity = Activity.find(params[:id])
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    if @activity.update(activity_params)
+      redirect_to @activity, status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
   def destroy
 
     @activity = Activity.find(params[:id])

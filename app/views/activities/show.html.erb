@@ -1,5 +1,10 @@
 <p><%= link_to "一覧に戻る", activities_path %></p>
 <h1><%= @activity.name %></h1>
+<%= link_to "アクティビティ名の編集", edit_activity_path(@activity) %>
+<%= link_to "アクティビティの削除", activity_path(@activity), data: {
+  turbo_method: :delete,
+  turbo_confirm: "本当に削除してよろしいですか？",
+} %> 
 <%= form_with model: @activity_history do |form| %>
   <div>
     <%= form.label :note, "メモ" %>
