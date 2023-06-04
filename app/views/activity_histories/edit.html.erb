@@ -1,3 +1,4 @@
+<p><%= link_to "一覧に戻る", @activity_history.activity %></p>
 <h1>編集</h1>
 <%= form_with model: @activity_history do |form| %>
   <table>
@@ -12,7 +13,7 @@
       </tr>
       <tr>
         <td><%= form.label :acted_at, "時刻" %></td>
-        <td><%= form.date_field :acted_at %></td>
+        <td><%= form.datetime_field :acted_at %></td>
       </tr>
     </tbody>
   </table>
@@ -20,5 +21,3 @@
     <%= form.submit "登録" %>
   </div>
 <% end %>
-<p><%= link_to "一覧に戻る", @activity_history.activity %></p>
-

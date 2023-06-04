@@ -1,5 +1,5 @@
 class Activity < ApplicationRecord
-  has_many :activity_histories
+  has_many :activity_histories, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 
