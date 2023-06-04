@@ -2,13 +2,21 @@
 
 one:
   acted_at: 2023-06-01 10:12:48
-  activity: ear_pick
+  activity: alice_ear_pick
 
 two:
   acted_at: 2023-05-01 14:12:48
   note: 手
-  activity: nail_clip
+  activity: alice_nail_clip
 
 three:
   acted_at: 2023-06-01 14:12:48
-  activity: nail_clip
+  activity: alice_nail_clip
+
+four:
+  acted_at: 2023-05-31 13:12:00
+  activity: bob_nail_clip
+
+five:
+  acted_at: 2023-05-15 14:46:00
+  activity: bob_nail_clip
