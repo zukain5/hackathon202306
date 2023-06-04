@@ -1,6 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :user
-  has_many :activity_histories
+  has_many :activity_histories, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
 
